@@ -38,7 +38,7 @@ class ChatCallbackHandler(BaseCallbackHandler):
 
 
 llm = ChatOllama(
-    model="llama3.2",
+    model="EEVE-Korean-10.8B:latest",
     temperature=0.1,
     streaming=True,
     callbacks=[
@@ -75,7 +75,7 @@ def embed_files(files):
         docs = loader.load_and_split(text_splitter=splitter)
         all_docs.extend(docs)
     
-    embeddings = OllamaEmbeddings(model="llama3.2")
+    embeddings = OllamaEmbeddings(model="EEVE-Korean-10.8B:latest")
     cached_embeddings = CacheBackedEmbeddings.from_bytes_store(embeddings, cache_dir)
     
     vectorstore = FAISS.from_documents(all_docs, cached_embeddings)

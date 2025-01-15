@@ -11,11 +11,11 @@ import streamlit as st
 import os
 import nltk
 
-# Replace the existing NLTK download code with this
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
+# NLTK punkt 패키지 다운로드
+nltk.download('punkt')
+
+# NLTK 데이터를 사용하는 곳에서 다운로드를 먼저 수행하게 설정
+nltk.data.path.append('/Users/aqaralife/nltk_data')
 
 st.set_page_config(
     page_title="FILE GPT",
@@ -38,7 +38,7 @@ class ChatCallbackHandler(BaseCallbackHandler):
 
 
 llm = ChatOllama(
-    model="llama3.2",
+    model="EEVE-Korean-10.8B:latest",
     temperature=0.1,
     streaming=True,
     callbacks=[
@@ -73,7 +73,7 @@ def embed_file(file):
     loader = UnstructuredFileLoader(file_path)
     docs = loader.load_and_split(text_splitter=splitter)
     
-    embeddings = OllamaEmbeddings(model="llama3.2")
+    embeddings = OllamaEmbeddings(model="EEVE-Korean-10.8B:latest")
     cached_embeddings = CacheBackedEmbeddings.from_bytes_store(embeddings, cache_dir)
     
     vectorstore = FAISS.from_documents(docs, cached_embeddings)
