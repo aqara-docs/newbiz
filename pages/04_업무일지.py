@@ -17,7 +17,7 @@ st.set_page_config(page_title="My Work Journal", page_icon="📋", layout="wide"
 st.write("# My Work Journal")
 
 # Path to your service account JSON file
-SERVICE_ACCOUNT_FILE = "/Users/aqaralife/git_projects/aqara_app/.streamlit/doorlock-432423-390c2bdfb237.json"
+SERVICE_ACCOUNT_FILE = os.getenv('SERVICE_ACCOUNT_FILE')
 
 # Load credentials from the JSON file
 creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=["https://www.googleapis.com/auth/spreadsheets"])
@@ -72,10 +72,10 @@ existing_data = cursor.fetchone()
 if existing_data:
     st.info("Existing entry found. Fields are pre-filled.")
     work_journal = st.text_area("업무일지", value=existing_data[0], height=200)
-    note = st.text_area("비고", value=existing_data[1], height=50)
+    note = st.text_area("비고", value=existing_data[1], height=100)
 else:
     work_journal = st.text_area("업무일지", height=200)
-    note = st.text_area("비고", height=50)
+    note = st.text_area("비고", height=100)
 
 # 구글 시트에서 기존 데이터 검색
 sheet_data = sheet.get_all_values()

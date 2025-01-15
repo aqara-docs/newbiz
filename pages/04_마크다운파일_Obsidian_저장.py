@@ -8,7 +8,7 @@ import shutil
 import pandas as pd
 
 # 기본 디렉토리 설정
-ROOT_DIR = "/Users/aqaralife/Documents/aqaralife/Business Report"
+ROOT_DIR = "/Users/aqaralife/Documents/Github/obsidian"
 
 def get_subdirectories(base_path):
     """지정된 기본 경로의 모든 하위 디렉토리를 찾습니다."""

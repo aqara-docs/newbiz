@@ -39,7 +39,7 @@ class ChatCallbackHandler(BaseCallbackHandler):
 
 # Using Ollama's model for LLM
 llm = ChatOllama(
-    model="EEVE-Korean-10.8B:latest",
+    model="llama3.2",
     temperature=0.1,
     streaming=True,
     callbacks=[ChatCallbackHandler()],  # Instantiate the callback handler

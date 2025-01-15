@@ -17,8 +17,9 @@ st.set_page_config(page_title="Preparation for New Biz", page_icon="📋", layou
 st.write("# Preparation for New Biz")
 
 # Path to your service account JSON file
-SERVICE_ACCOUNT_FILE = "/Users/aqaralife/git_projects/aqara_app/.streamlit/doorlock-432423-390c2bdfb237.json"
 
+SERVICE_ACCOUNT_FILE = os.getenv('SERVICE_ACCOUNT_FILE')
+print(SERVICE_ACCOUNT_FILE)
 # Load credentials from the JSON file
 creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=["https://www.googleapis.com/auth/spreadsheets"])
 

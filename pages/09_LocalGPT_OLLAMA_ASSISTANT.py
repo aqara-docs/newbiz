@@ -27,7 +27,7 @@ class ChatCallbackHandler(BaseCallbackHandler):
 
 # Ollama의 Chat 모델 사용
 llm = ChatOllama(
-    model="EEVE-Korean-10.8B:latest",
+    model="llama3.2",
     temperature=0.1,
     streaming=True,
     callbacks=[ChatCallbackHandler()],

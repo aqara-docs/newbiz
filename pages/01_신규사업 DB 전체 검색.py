@@ -19,6 +19,8 @@ def decimal_default(obj):
     raise TypeError
 
 # MySQL Database configuration for cs
+
+
 db_config = {
     'user': os.getenv('SQL_USER'),
     'password': os.getenv('SQL_PASSWORD'),

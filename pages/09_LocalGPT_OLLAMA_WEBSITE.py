@@ -36,7 +36,7 @@ class ChatCallbackHandler(BaseCallbackHandler):
 
 
 llm = ChatOllama(
-    model="EEVE-Korean-10.8B:latest",
+    model="llama3.2",
     temperature=0.1,
     streaming=True,
     callbacks=[
@@ -97,7 +97,7 @@ def embed_website(url):
         for split_text in split_texts:
             split_docs.append(Document(page_content=split_text, metadata=doc.metadata))
 
-    embeddings = OllamaEmbeddings(model="EEVE-Korean-10.8B:latest")
+    embeddings = OllamaEmbeddings(model="llama3.2")
     cached_embeddings = CacheBackedEmbeddings.from_bytes_store(embeddings, cache_dir)
 
     # Create vector store

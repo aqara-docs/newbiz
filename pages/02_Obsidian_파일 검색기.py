@@ -97,7 +97,7 @@ def main():
     st.title("마크다운 문서 검색 시스템")
 
     # 기본 디렉토리 설정
-    base_directory = "/Users/aqaralife/Documents/aqaralife/Business Report"
+    base_directory = "/Users/aqaralife/Documents/GitHub/obsidian"
 
     # 데이터 로드
     df = get_folder_structure(base_directory)
