@@ -5,6 +5,17 @@ import re
 from urllib.parse import unquote, urlparse, urlunparse, urljoin
 import html2text
 from bs4 import BeautifulSoup
+from playwright.async_api import async_playwright
+
+def ensure_playwright_browsers():
+    try:
+        import subprocess
+        subprocess.run(["playwright", "install", "chromium"], check=True)
+    except Exception as e:
+        st.error(f"Failed to install browsers: {e}")
+        st.info("Try running 'playwright install' manually from the command line")
+
+ensure_playwright_browsers()
 
 def normalize_url(url):
     """URL을 정규화하는 함수"""
@@ -59,7 +70,7 @@ def extract_main_content(html_content, base_url):
 st.title("웹 크롤러")
 
 # URL 입력 필드
-url = st.text_input("크롤링할 웹사이트 URL을 입력하세요:", "https://example.com")
+url = st.text_input("크롤링할 웹사이트 URL을 입력하세요:", "https://www.aqara.com/en/about-us/news/")
 
 # 크롤링 버튼
 if st.button("크롤링 시작"):
